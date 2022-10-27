@@ -1,7 +1,7 @@
 import time
 import pytest
-from pageObjects.LoginPageObject import LoginPage
-from pageObjects.AddCustomerPage import AddCustomer
+from pageObjects.LoginPage import LoginPage
+from pageObjects.AddcustomerPage import AddCustomer
 from pageObjects.SearchCustomerPage import SearchCustomer
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen

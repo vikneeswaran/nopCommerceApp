@@ -1,7 +1,7 @@
 import time
 import pytest
-from pageObjects.LoginPageObject import LoginPage
-from pageObjects.AddCustomerPage import AddCustomer
+from pageObjects.LoginPage import LoginPage
+from pageObjects.AddcustomerPage import AddCustomer
 from pageObjects.SearchCustomerPage import SearchCustomer
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
@@ -13,7 +13,6 @@ class Test_SearchCustomerByEmail_004:
     logger = LogGen.loggen()  # Logger
 
     @pytest.mark.regression
-
     def test_searchCustomerByEmail(self,setup):
         self.logger.info("************* SearchCustomerByEmail_004 **********")
         self.driver=setup

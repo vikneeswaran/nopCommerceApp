@@ -1,5 +1,5 @@
 import pytest
-from selenium import webdriver
+
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
@@ -9,7 +9,6 @@ class Test_001_Login:
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger=LogGen.loggen()
-
     @pytest.mark.regression
     def test_homePageTitle(self,setup):
         self.logger.info("*************** Test_001_Login *****************")

@@ -5,17 +5,17 @@ from selenium.webdriver.common.by import By
 
 class AddCustomer:
     # Add customer Page
-    lnkCustomers_menu_xpath = "//a[@href='#']//span[contains(text(),'Customers')]"
-    lnkCustomers_menuitem_xpath = "//span[@class='menu-item-title'][contains(text(),'Customers')]"
-    btnAddnew_xpath = "//a[@class='btn bg-blue']"
+    lnkCustomers_menu_xpath = "//a[@href='#']//p[contains(text(),'Customers')]"
+    lnkCustomers_menuitem_xpath = "//a[@href='/Admin/Customer/List']//p[contains(text(),'Customers')]"
+    btnAddnew_xpath = "//i[@class='fas fa-plus-square']"
     txtEmail_xpath = "//input[@id='Email']"
     txtPassword_xpath = "//input[@id='Password']"
-    txtcustomerRoles_xpath = "//div[@class='k-multiselect-wrap k-floatwrap']"
-    lstitemAdministrators_xpath = "//li[contains(text(),'Administrators')]"
-    lstitemRegistered_xpath = "//li[contains(text(),'Registered')]"
-    lstitemGuests_xpath = "//li[contains(text(),'Guests')]"
+    txtcustomerRoles_xpath = "//div[@class='input-group-append input-group-required']//input[@role='listbox']"
+    lstitemAdministrators_xpath = "//li[normalize-space()='Administrators']"
+    lstitemRegistered_xpath = "//li[@id='5bd01bc1-3db1-448a-a4b5-f5ebe1a26ba0']"
+    lstitemGuests_xpath = "//li[normalize-space()='Guests']"
     lstitemVendors_xpath = "//li[contains(text(),'Vendors')]"
-    drpmgrOfVendor_xpath = "//*[@id='VendorId']"
+    drpmgrOfVendor_xpath = "//select[@id='VendorId']"
     rdMaleGender_id = "Gender_Male"
     rdFeMaleGender_id = "Gender_Female"
     txtFirstName_xpath = "//input[@id='FirstName']"
@@ -53,7 +53,7 @@ class AddCustomer:
         elif role == 'Guests':
             # Here user can be Registered( or) Guest, only one
             time.sleep ( 3 )
-            self.driver.find_element_by_xpath ( "//*[@id='SelectedCustomerRoleIds_taglist']/li/span[2]" ).click ()
+            self.driver.find_element(By.XPATH,"//*[@id='SelectedCustomerRoleIds_taglist']/li/span[2]" ).click ()
             self.listitem = self.driver.find_element ( By.XPATH, self.lstitemGuests_xpath )
         elif role == 'Registered':
             self.listitem = self.driver.find_element ( By.XPATH, self.lstitemRegistered_xpath )

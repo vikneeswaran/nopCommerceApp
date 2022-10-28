@@ -6,6 +6,7 @@ from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 import string
 import random
+from selenium.webdriver.common.by import By
 
 class Test_003_AddCustomer:
     baseURL = ReadConfig.getApplicationURL()
@@ -54,7 +55,7 @@ class Test_003_AddCustomer:
 
         self.logger.info("********* Add customer validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.XPATH,"/html/body/div[3]/div[1]/div[1]").text
 
         print(self.msg)
         if 'customer has been added successfully.' in self.msg:

@@ -7,17 +7,17 @@ from selenium.webdriver.edge.service import Service
 @pytest.fixture()
 def setup(browser):
     if browser=='chrome':
-        serv_obj_chrome = Service("C:\SeleniumDrivers\chromedriver_win32\chromedriver.exe")
+        serv_obj_chrome = Service("C:\\SeleniumDrivers\\chromedriver_win32\\chromedriver.exe")
         driver=webdriver.Chrome(service=serv_obj_chrome)
         print("Launching chrome browser.........")
     elif browser=='firefox':
-        serv_obj_ff = Service("C:\SeleniumDrivers\geckodriver-v0.31.0-win64\geckodriver.exe")
+        serv_obj_ff = Service("C:\\SeleniumDrivers\\geckodriver-v0.31.0-win64\\geckodriver.exe")
         driver = webdriver.firefox(service=serv_obj_ff)
         print("Launching firefox browser.........")
     else:
-        serv_obj_edge = Service("C:\SeleniumDrivers\edgedriver_win64\msedgedriver.exe")
-        driver = webdriver.firefox(service=serv_obj_edge)
-        print("Launching firefox browser.........")
+        serv_obj_edge = Service("C:\\SeleniumDrivers\\edgedriver_win64\\msedgedriver.exe")
+        driver = webdriver.edge(service=serv_obj_edge)
+        print("Launching edge browser.........")
     return driver
 
 def pytest_addoption(parser):    # This will get the value from CLI /hooks

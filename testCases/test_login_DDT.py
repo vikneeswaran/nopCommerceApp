@@ -1,9 +1,12 @@
-import pytest
-from pageObjects.LoginPage import LoginPage
-from utilities.readProperties import ReadConfig
-from utilities.customLogger import LogGen
-from utilities import XLUtils
 import time
+
+import pytest
+
+from pageObjects.LoginPage import LoginPage
+from utilities.customLogger import LogGen
+from utilities.readProperties import ReadConfig
+from utilities import XLutils
+
 
 class Test_002_DDT_Login():
     baseURL = ReadConfig.getApplicationURL()
@@ -11,7 +14,7 @@ class Test_002_DDT_Login():
     logger = LogGen.loggen()  # Logger
 
     @pytest.mark.regression
-    def test_login_ddt(self,setup):
+    def test_login_ddt( self, setup, XLUtils=None ):
         self.logger.info("******* Starting Test_002_DDT_Login Test **********")
         self.logger.info("******* Starting Login DDT Test **********")
         self.driver = setup
@@ -19,14 +22,14 @@ class Test_002_DDT_Login():
         self.driver.maximize_window()
         self.lp = LoginPage(self.driver)
 
-        self.rows = XLUtils.getRowCount(self.path, 'Sheet1')
+        self.rows = XLutils.getRowCount(self.path,'Sheet1')
         print('Number of rows...',self.rows)
         lst_status=[]
 
         for r in range(2,self.rows+1):
-            self.user=XLUtils.readData(self.path,'Sheet1',r,1)
-            self.password = XLUtils.readData(self.path, 'Sheet1', r, 2)
-            self.exp = XLUtils.readData(self.path, 'Sheet1', r, 3)
+            self.user=XLutils.readData(self.path,'Sheet1',r,1)
+            self.password = XLutils.readData(self.path, 'Sheet1', r, 2)
+            self.exp = XLutils.readData(self.path, 'Sheet1', r, 3)
 
             self.lp.setUserName(self.user)
             self.lp.setPassword(self.password)
